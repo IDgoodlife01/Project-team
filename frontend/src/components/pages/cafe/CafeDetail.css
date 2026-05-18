@@ -1,0 +1,293 @@
+.cd-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: "Pretendard", sans-serif;
+}
+
+/* 1+4 갤러리 */
+.cd-gallery {
+  display: flex;
+  gap: 10px;
+  height: 460px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.cd-gallery-main {
+  flex: 2;
+  height: 100%;
+}
+.cd-gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cd-gallery-sub {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+}
+.cd-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cd-no-img {
+  height: 100%;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  font-size: 11px;
+}
+
+/* 레이아웃 */
+.cd-layout {
+  display: flex;
+  gap: 50px;
+}
+.cd-main-content {
+  flex: 7;
+}
+.cd-sidebar {
+  flex: 3;
+}
+
+.cd-title-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.cd-name {
+  font-size: 34px;
+  font-weight: 800;
+  color: #111;
+}
+.cd-addr-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 35px;
+}
+.cd-map-link {
+  color: #f97316;
+  font-weight: 700;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* 시설/안내 */
+.cd-section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cd-facility-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.cd-facility-item {
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.cd-icon-box {
+  width: 54px;
+  height: 54px;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cd-facility-text {
+  font-size: 11px;
+  color: #999;
+  font-weight: 600;
+  text-align: center;
+}
+.cd-line {
+  border: 0;
+  border-top: 1px solid #f0f0f0;
+  margin: 40px 0;
+}
+.cd-description-text {
+  line-height: 1.8;
+  color: #444;
+  font-size: 16px;
+}
+
+/* 리뷰 */
+.cd-review-form {
+  background: #f9f9f9;
+  padding: 25px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+.cd-review-form textarea {
+  width: 100%;
+  height: 90px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 10px 0;
+  resize: none;
+}
+.cd-review-form button {
+  width: 100%;
+  padding: 15px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cd-review-item {
+  padding: 20px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+.cd-rev-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+.cd-mypage-link {
+  width: 100%;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 15px;
+  color: #888;
+  font-weight: 700;
+  margin-top: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* 추천 카페 */
+.cd-rec-section {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid #f0f0f0;
+}
+.cd-rec-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.cd-rec-all {
+  font-size: 13px;
+  color: #f97316;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cd-rec-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.cd-rec-card {
+  cursor: pointer;
+}
+.cd-rec-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background: #f9f9f9;
+}
+.cd-rec-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cd-rec-name {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.cd-rec-addr {
+  font-size: 13px;
+  color: #999;
+}
+
+/* 사이드바 */
+.cd-card {
+  border: 1px solid #f0f0f0;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 100px;
+}
+.cd-card-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+.cd-card-row .k {
+  color: #aaa;
+}
+.cd-card-row .v {
+  font-weight: 700;
+}
+.cd-card-row .orange {
+  color: #f97316;
+  cursor: pointer;
+}
+.cd-card-addr {
+  font-weight: 700;
+  margin: 20px 0;
+  font-size: 14px;
+}
+.cd-card-map {
+  height: 180px;
+  background: #f9f9f9;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+}
+.cd-nav-btn {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #eee;
+  background: #fff;
+  border-radius: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.cd-status-msg {
+  text-align: center;
+  padding: 150px 0;
+  font-weight: 700;
+  color: #bbb;
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>카페 등록/수정 - 꼬리살랑 관리자</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; display: flex; min-height: 100vh; background: #f5f6fa; }
+        .sidebar { width: 220px; background: #2c3e50; color: white; padding: 20px 0; position: fixed; height: 100vh; }
+        .sidebar h2 { text-align: center; padding: 20px; font-size: 18px; border-bottom: 1px solid #34495e; margin-bottom: 10px; }
+        .sidebar a { display: block; padding: 12px 24px; color: #bdc3c7; text-decoration: none; font-size: 14px; }
+        .sidebar a:hover { background: #34495e; color: white; }
+        .sidebar .menu-title { padding: 16px 24px 6px; font-size: 11px; color: #7f8c8d; text-transform: uppercase; }
+        .main { margin-left: 220px; padding: 30px; flex: 1; }
+        .page-title { font-size: 24px; font-weight: bold; margin-bottom: 24px; color: #2c3e50; }
+        .form-box { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); max-width: 600px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 14px; color: #555; margin-bottom: 6px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .btn { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; text-decoration: none; display: inline-block; }
+        .btn-success { background: #2ecc71; color: white; }
+        .btn-primary { background: #3498db; color: white; }
+        .btn:hover { opacity: 0.85; }
+
+        /* 이미지 업로드 */
+        .image-preview-box { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+        .image-preview-box img { width: 100px; height: 100px; object-fit: cover; border-radius: 6px; border: 1px solid #ddd; }
+        .upload-btn { padding: 8px 16px; background: #8e44ad; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; }
+        .upload-btn:hover { opacity: 0.85; }
+        .uploading { color: #888; font-size: 13px; margin-top: 6px; }
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <h2>🐾 꼬리살랑</h2>
+    <div class="menu-title">카페 관리</div>
+    <a th:href="@{/admin/cafes}">카페 목록</a>
+    <a th:href="@{/admin/cafes/add}">카페 등록</a>
+    <div class="menu-title">회원 관리</div>
+    <a th:href="@{/admin/users}">회원 목록</a>
+    <div class="menu-title">게시글 관리</div>
+    <a th:href="@{/admin/posts/free}">자유게시판</a>
+    <a th:href="@{/admin/posts/petsitter}">펫시터</a>
+    <div class="menu-title">리뷰 관리</div>
+    <a th:href="@{/admin/reviews}">리뷰 목록</a>
+</div>
+
+<div class="main">
+    <h1 class="page-title" th:text="${cafe.cafeId != 0} ? '카페 수정' : '카페 등록'"></h1>
+
+    <div class="form-box">
+        <form id="cafeForm"
+              th:action="${cafe.cafeId != 0} ? @{/admin/cafes/edit/{id}(id=${cafe.cafeId})} : @{/admin/cafes/add}"
+              method="post" th:object="${cafe}">
+
+            <div class="form-group">
+                <label>지역</label>
+                <select name="regionId">
+                    <option value="">지역 선택</option>
+                    <option th:each="region : ${regions}"
+                            th:value="${region.regionId}"
+                            th:text="${region.regionName}"
+                            th:selected="${region.regionId == cafe.regionId}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>카페명</label>
+                <input type="text" th:field="*{cafeName}" placeholder="카페명 입력" required />
+            </div>
+            <div class="form-group">
+                <label>주소</label>
+                <input type="text" th:field="*{address}" placeholder="주소 입력" required />
+            </div>
+            <div class="form-group">
+                <label>전화번호</label>
+                <input type="text" th:field="*{phone}" placeholder="02-0000-0000" />
+            </div>
+            <div class="form-group">
+                <label>카페 소개</label>
+                <textarea th:field="*{description}" placeholder="카페 소개를 입력하세요"></textarea>
+            </div>
+            <div class="form-group">
+                <label>허용 반려동물 종류</label>
+                <input type="text" th:field="*{allowedPetTypes}" placeholder="예: 소형견,중형견,고양이" />
+            </div>
+            <div class="form-group">
+                <label>최대 몸무게 (kg)</label>
+                <input type="number" th:field="*{maxWeight}" placeholder="예: 15" step="0.1" />
+            </div>
+            <div class="form-group">
+                <label>네이버 지도 URL</label>
+                <input type="text" th:field="*{naverMapUrl}" placeholder="https://naver.me/..." />
+            </div>
+            <div class="form-group">
+                <label>위도</label>
+                <input type="number" th:field="*{latitude}" placeholder="예: 37.5065" step="0.0000001" />
+            </div>
+            <div class="form-group">
+                <label>경도</label>
+                <input type="number" th:field="*{longitude}" placeholder="예: 127.0536" step="0.0000001" />
+            </div>
+
+            <!-- 이미지 업로드 -->
+            <div class="form-group">
+                <label>카페 이미지</label>
+                <input type="file" id="imageInput" multiple accept="image/*" style="display:none;" />
+                <button type="button" class="upload-btn" onclick="document.getElementById('imageInput').click()">
+                    📷 이미지 선택
+                </button>
+                <div class="uploading" id="uploadingText" style="display:none;">업로드 중...</div>
+                <div class="image-preview-box" id="previewBox"></div>
+                <!-- 업로드된 이미지 URL들 hidden input으로 저장 -->
+                <div id="imageUrlInputs"></div>
+            </div>
+
+            <div style="display:flex; gap:10px; margin-top:20px;">
+                <button type="submit" class="btn btn-success" id="submitBtn">저장</button>
+                <a th:href="@{/admin/cafes}" class="btn btn-primary">취소</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const CLOUD_NAME = "dysywlkhr";
+    const UPLOAD_PRESET = "GGORI_IMAGE";
+
+    const imageInput = document.getElementById('imageInput');
+    const previewBox = document.getElementById('previewBox');
+    const imageUrlInputs = document.getElementById('imageUrlInputs');
+    const uploadingText = document.getElementById('uploadingText');
+    const submitBtn = document.getElementById('submitBtn');
+
+    imageInput.addEventListener('change', async function () {
+        const files = Array.from(this.files);
+        if (files.length === 0) return;
+
+        uploadingText.style.display = 'block';
+        submitBtn.disabled = true;
+
+        for (const file of files) {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('upload_preset', UPLOAD_PRESET);
+
+            try {
+                const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+                const url = data.secure_url;
+
+                // 미리보기 이미지 추가
+                const img = document.createElement('img');
+                img.src = url;
+                previewBox.appendChild(img);
+
+                // hidden input으로 URL 저장 (폼 제출 시 같이 전송)
+                const hidden = document.createElement('input');
+                hidden.type = 'hidden';
+                hidden.name = 'imageUrls';
+                hidden.value = url;
+                imageUrlInputs.appendChild(hidden);
+
+            } catch (err) {
+                console.error('업로드 실패:', err);
+                alert('이미지 업로드 실패!');
+            }
+        }
+
+        uploadingText.style.display = 'none';
+        submitBtn.disabled = false;
+    });
+</script>
+</body>
+</html>

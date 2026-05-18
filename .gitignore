@@ -1,0 +1,60 @@
+# =========================
+# Frontend (React)
+# =========================
+
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+frontend/coverage/
+
+# =========================
+# Backend (Spring Boot)
+# =========================
+
+backend/.gradle/
+backend/build/
+backend/out/
+
+# =========================
+# Node / Package
+# =========================
+
+.pnp/
+.pnp.js
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# IDE
+# =========================
+
+.idea/
+*.iml
+
+.vscode/
+
+*.swp
+*.swo
+
+# =========================
+# OS
+# =========================
+
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+
+*.log
+

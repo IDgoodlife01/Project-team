@@ -1,0 +1,210 @@
+/* 구글 폰트(Noto Sans KR) 불러오기 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap");
+
+/* 공통 아이콘 폰트 (카카오 아이콘용) */
+@import url("https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css");
+
+.auth-wrapper {
+  font-family: "Noto Sans KR", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fdf8f5;
+  padding: 20px;
+}
+
+.auth-inner {
+  width: 100%;
+  max-width: 480px;
+  background: white;
+  padding: 60px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.logo-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.temp-logo-icon {
+  font-size: 30px;
+}
+.logo-text {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ff6f3d;
+}
+
+.sub-title {
+  color: #888;
+  font-size: 16px;
+  margin-bottom: 50px;
+}
+
+.auth-form h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 25px;
+}
+.input-group label {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 10px;
+}
+.input-group input {
+  width: 100%;
+  padding: 18px 20px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+.input-group input:focus {
+  outline: none;
+  border-color: #ff6f3d;
+  background-color: white;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.find-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.divider-bar {
+  font-size: 12px;
+  color: #ccc;
+}
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.find-link {
+  text-decoration: none;
+  color: #777;
+  font-size: 14px;
+}
+/* 메인 로그인/회원가입 버튼 */
+.main-submit-btn {
+  width: 100%;
+  padding: 18px;
+  background-color: #ff6f3d;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.main-submit-btn:hover {
+  background-color: #e65a2b;
+}
+
+/* 구분선 (또는) */
+.divider {
+  position: relative;
+  margin: 40px 0;
+  text-align: center;
+}
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #eaeaea;
+}
+.divider span {
+  position: relative;
+  background: white;
+  padding: 0 15px;
+  color: #bbb;
+  font-size: 14px;
+}
+
+/* 소셜 로그인 버튼 공통 스타일 */
+.social-auth-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.social-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 카카오 */
+.social-btn.kakao {
+  background-color: #fee500;
+  color: #191919;
+}
+.social-btn.kakao i {
+  font-size: 20px;
+}
+
+/* 네이버 */
+.social-btn.naver {
+  background-color: #03c75a;
+  color: white;
+}
+.social-btn.naver span {
+  font-weight: 900;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+/* 구글 */
+.social-btn.google {
+  background-color: white;
+  color: #555;
+  border: 1px solid #eaeaea;
+}
+.social-btn.google img {
+  width: 18px;
+}
+
+.bottom-link {
+  font-size: 15px;
+  color: #777;
+}
+.bottom-link a {
+  text-decoration: none;
+  color: #ff6f3d;
+  font-weight: 500;
+}

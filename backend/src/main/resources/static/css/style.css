@@ -1,0 +1,618 @@
+/* =============================================
+   style.css - Spring Boot 게시판
+   미니멀 블루 테마
+   ============================================= */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+/* ── CSS 변수 ── */
+:root {
+    --primary:        #2563eb;   /* 메인 블루 */
+    --primary-hover:  #1d4ed8;   /* 버튼 호버 */
+    --primary-light:  #eff6ff;   /* 배경 강조 */
+    --primary-border: #bfdbfe;   /* 테두리 */
+
+    --text-main:      #1e293b;   /* 본문 텍스트 */
+    --text-sub:       #64748b;   /* 보조 텍스트 */
+    --text-placeholder: #94a3b8; /* 플레이스홀더 */
+
+    --bg:             #ffffff;   /* 페이지 배경 */
+    --bg-gray:        #f8fafc;   /* 섹션 배경 */
+    --border:         #e2e8f0;   /* 기본 테두리 */
+
+    --danger:         #ef4444;   /* 오류/삭제 */
+    --danger-light:   #fef2f2;
+    --success:        #22c55e;   /* 성공 */
+    --success-light:  #f0fdf4;
+
+    --radius-sm:  4px;
+    --radius-md:  8px;
+    --radius-lg:  12px;
+
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.10);
+
+    --transition: 0.18s ease;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; }
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--bg-gray);
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--primary); }
+
+/* =============================================
+   NAVBAR
+   ============================================= */
+.navbar {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-brand span { font-size: 20px; }
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-menu a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-sub);
+    padding: 6px 14px;
+    border-radius: var(--radius-md);
+    transition: all var(--transition);
+}
+
+.navbar-menu a:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-sub);
+}
+
+.navbar-user strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* =============================================
+   CONTAINER
+   ============================================= */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px;
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+}
+.btn-primary:hover {
+    background: var(--primary-hover);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: var(--bg);
+    color: var(--text-sub);
+    border: 1px solid var(--border);
+}
+.btn-secondary:hover {
+    background: var(--bg-gray);
+    color: var(--text-main);
+    border-color: var(--primary-border);
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: #fff;
+}
+.btn-danger:hover {
+    background: #dc2626;
+    color: #fff;
+}
+
+.btn-sm { padding: 5px 12px; font-size: 13px; }
+.btn-lg { padding: 12px 28px; font-size: 15px; }
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* =============================================
+   FORM (회원가입 / 로그인)
+   ============================================= */
+.form-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 40px 44px;
+    max-width: 440px;
+    margin: 60px auto;
+}
+
+.form-box h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--primary-light);
+}
+
+.form-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-box div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-box label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-sub);
+}
+
+.form-box input,
+.form-box textarea,
+.form-box select {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg);
+    color: var(--text-main);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
+}
+
+.form-box input:focus,
+.form-box textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.form-box input::placeholder { color: var(--text-placeholder); }
+
+.form-box .btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.form-box > a {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text-sub);
+}
+.form-box > a:hover { color: var(--primary); }
+
+/* 필드 오류 메시지 */
+.field-error {
+    font-size: 12px;
+    color: var(--danger);
+    margin-top: 2px;
+}
+
+/* =============================================
+   ALERT / MESSAGE
+   ============================================= */
+.error-msg {
+    background: var(--danger-light);
+    border: 1px solid #fecaca;
+    border-left: 3px solid var(--danger);
+    color: var(--danger);
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.success-msg {
+    background: var(--success-light);
+    border: 1px solid #bbf7d0;
+    border-left: 3px solid var(--success);
+    color: #15803d;
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+/* =============================================
+   BOARD — 게시판 목록
+   ============================================= */
+.board-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.board-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.board-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+}
+
+.board-table thead {
+    background: var(--primary-light);
+    border-bottom: 1px solid var(--primary-border);
+}
+
+.board-table thead th {
+    padding: 13px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+    text-align: left;
+    white-space: nowrap;
+}
+
+.board-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background var(--transition);
+}
+
+.board-table tbody tr:last-child { border-bottom: none; }
+
+.board-table tbody tr:hover { background: var(--bg-gray); }
+
+.board-table tbody td {
+    padding: 13px 16px;
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.board-table tbody td a {
+    color: var(--text-main);
+    font-weight: 500;
+    transition: color var(--transition);
+}
+.board-table tbody td a:hover { color: var(--primary); }
+
+.board-table .td-num   { width: 70px;  color: var(--text-sub); text-align: center; }
+.board-table .td-title { }
+.board-table .td-writer { width: 120px; color: var(--text-sub); text-align: center; }
+.board-table .td-view  { width: 80px;  color: var(--text-sub); text-align: center; }
+.board-table .td-date  { width: 110px; color: var(--text-sub); text-align: center; font-size: 13px; }
+
+/* =============================================
+   BOARD — 글쓰기 / 수정
+   ============================================= */
+.write-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 36px 40px;
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.write-box h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.write-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.write-box input[type="text"],
+.write-box textarea {
+    width: 100%;
+    padding: 11px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg);
+    color: var(--text-main);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
+}
+
+.write-box input[type="text"]:focus,
+.write-box textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.write-box textarea { resize: vertical; min-height: 260px; line-height: 1.7; }
+
+/* =============================================
+   BOARD — 게시글 상세
+   ============================================= */
+.detail-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 36px 40px;
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.detail-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 14px;
+    line-height: 1.4;
+}
+
+.detail-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+    color: var(--text-sub);
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+}
+
+.detail-meta span { display: flex; align-items: center; gap: 4px; }
+
+.detail-content {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--text-main);
+    min-height: 160px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.detail-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+/* =============================================
+   COMMENT — 댓글
+   ============================================= */
+.comments {
+    max-width: 820px;
+    margin: 28px auto 0;
+}
+
+.comments h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-main);
+}
+
+.comments h3 span {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.comment-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    transition: box-shadow var(--transition);
+}
+
+.comment-item:hover { box-shadow: var(--shadow-sm); }
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.comment-writer {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.comment-date {
+    font-size: 12px;
+    color: var(--text-sub);
+}
+
+.comment-content {
+    font-size: 14px;
+    color: var(--text-main);
+    line-height: 1.65;
+}
+
+/* 댓글 작성 폼 */
+.comment-form {
+    background: var(--bg-gray);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 18px;
+    margin-top: 16px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg);
+    color: var(--text-main);
+    resize: none;
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    line-height: 1.6;
+}
+
+.comment-form textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+.comment-form .btn-primary {
+    margin-top: 10px;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+    text-align: center;
+    padding: 28px;
+    font-size: 13px;
+    color: var(--text-sub);
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+    margin-top: 60px;
+}
+
+/* =============================================
+   PAGINATION (페이징 - 추후 사용)
+   ============================================= */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 28px;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text-sub);
+    transition: all var(--transition);
+}
+
+.pagination a:hover {
+    background: var(--primary-light);
+    border-color: var(--primary-border);
+    color: var(--primary);
+}
+
+.pagination .active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    font-weight: 600;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+    .container { padding: 20px 16px; }
+    .form-box  { padding: 28px 20px; margin: 24px auto; }
+    .write-box,
+    .detail-box { padding: 24px 18px; }
+    .board-table .td-writer,
+    .board-table .td-view { display: none; }
+    .navbar-inner { padding: 0 16px; }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>카페 관리 - 꼬리살랑 관리자</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; display: flex; min-height: 100vh; background: #f5f6fa; }
+        .sidebar { width: 220px; background: #2c3e50; color: white; padding: 20px 0; position: fixed; height: 100vh; }
+        .sidebar h2 { text-align: center; padding: 20px; font-size: 18px; border-bottom: 1px solid #34495e; margin-bottom: 10px; }
+        .sidebar a { display: block; padding: 12px 24px; color: #bdc3c7; text-decoration: none; font-size: 14px; }
+        .sidebar a:hover { background: #34495e; color: white; }
+        .sidebar .menu-title { padding: 16px 24px 6px; font-size: 11px; color: #7f8c8d; text-transform: uppercase; }
+        .main { margin-left: 220px; padding: 30px; flex: 1; }
+        .page-title { font-size: 24px; font-weight: bold; margin-bottom: 24px; color: #2c3e50; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        th { background: #2c3e50; color: white; padding: 12px 16px; text-align: left; font-size: 14px; }
+        td { padding: 12px 16px; border-bottom: 1px solid #ecf0f1; font-size: 14px; color: #333; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #f8f9fa; }
+        .btn { padding: 6px 14px; border: none; border-radius: 4px; cursor: pointer; font-size: 13px; text-decoration: none; display: inline-block; }
+        .btn-success { background: #2ecc71; color: white; }
+        .btn-warning { background: #f39c12; color: white; }
+        .btn-danger { background: #e74c3c; color: white; }
+        .btn:hover { opacity: 0.85; }
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <h2>🐾 꼬리살랑</h2>
+    <div class="menu-title">카페 관리</div>
+    <a th:href="@{/admin/cafes}">카페 목록</a>
+    <a th:href="@{/admin/cafes/add}">카페 등록</a>
+    <div class="menu-title">회원 관리</div>
+    <a th:href="@{/admin/users}">회원 목록</a>
+    <div class="menu-title">게시글 관리</div>
+    <a th:href="@{/admin/posts/free}">자유게시판</a>
+    <a th:href="@{/admin/posts/petsitter}">펫시터</a>
+    <div class="menu-title">리뷰 관리</div>
+    <a th:href="@{/admin/reviews}">리뷰 목록</a>
+</div>
+
+<div class="main">
+    <div class="top-bar">
+        <h1 class="page-title">카페 목록</h1>
+        <a th:href="@{/admin/cafes/add}" class="btn btn-success">+ 카페 등록</a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>카페명</th>
+            <th>지역ID</th>
+            <th>주소</th>
+            <th>허용 반려동물</th>
+            <th>최대 몸무게</th>
+            <th>별점</th>
+            <th>즐겨찾기</th>
+            <th>관리</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cafe : ${cafes}">
+            <td th:text="${cafe.cafeId}"></td>
+            <td th:text="${cafe.cafeName}"></td>
+            <td th:text="${cafe.regionId}"></td>
+            <td th:text="${cafe.address}"></td>
+            <td th:text="${cafe.allowedPetTypes}"></td>
+            <td th:text="${cafe.maxWeight} + 'kg'"></td>
+            <td th:text="${cafe.rating}"></td>
+            <td th:text="${cafe.favoriteCount}"></td>
+            <td>
+                <a th:href="@{/admin/cafes/edit/{id}(id=${cafe.cafeId})}" class="btn btn-warning">수정</a>
+                <form th:action="@{/admin/cafes/delete/{id}(id=${cafe.cafeId})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('삭제하시겠습니까?')">삭제</button>
+                </form>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(cafes)}">
+            <td colspan="9" style="text-align:center; color:#888;">등록된 카페가 없습니다.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

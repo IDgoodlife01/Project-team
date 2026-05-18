@@ -1,0 +1,122 @@
+.comm-wrapper {
+  background-color: #fff9f6; /* 배경 베이지색 톤 */
+  min-height: 100vh;
+  padding: 50px 0;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.comm-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  padding: 0 20px;
+}
+
+/* 사이드바 */
+.comm-sidebar { width: 220px; flex-shrink: 0; }
+
+.sidebar-title-box {
+  background-color: #ff6b35;
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.sidebar-menu {
+  background: white;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  margin-bottom: 20px;
+}
+
+.sidebar-menu div {
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #888;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: 500;
+}
+
+.sidebar-menu div:hover { background-color: #f9f9f9; }
+.sidebar-menu div.active {
+  background-color: #ff6b35;
+  color: white;
+  font-weight: 700;
+}
+
+.write-action-btn {
+  width: 100%;
+  padding: 16px;
+  background-color: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+}
+
+/* 메인 영역 */
+.comm-main { flex: 1; }
+
+.comm-search-bar {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.comm-search-bar input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+}
+
+.comm-card {
+  background: white;
+  padding: 35px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.comm-card:hover { transform: translateY(-3px); }
+
+.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.badge.petsitter { background-color: #e6fffa; color: #00bfa5; } /* 펫시터용 민트색 뱃지 */
+
+.region { color: #666; font-size: 14px; font-weight: 600; }
+
+.card-title { font-size: 22px; font-weight: 800; margin: 0 0 12px 0; color: #111; }
+.card-excerpt { color: #777; font-size: 15px; line-height: 1.6; margin-bottom: 20px; }
+
+.card-footer { color: #bbb; font-size: 13px; font-weight: 500; display: flex; align-items: center; }
+.card-footer .dot { margin: 0 8px; }
+
+.status-msg { text-align: center; padding: 100px 0; color: #999; font-weight: 600; }

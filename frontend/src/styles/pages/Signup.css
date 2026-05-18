@@ -1,0 +1,260 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css");
+
+/* 기본 레이아웃 */
+.auth-wrapper {
+  font-family: "Noto Sans KR", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fdf8f5;
+  padding: 40px 20px;
+}
+
+.auth-inner {
+  width: 100%;
+  max-width: 480px;
+  background: white;
+  padding: 50px 40px;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+/* 로고 및 제목 */
+.logo-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.temp-logo-icon {
+  font-size: 30px;
+}
+.logo-text {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ff6f3d;
+}
+.sub-title {
+  color: #888;
+  font-size: 15px;
+  margin-bottom: 40px;
+}
+
+/* 폼 요소 */
+.auth-form h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 35px;
+}
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 8px;
+}
+.input-group input {
+  width: 100%;
+  padding: 15px 18px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  background-color: #f8f8f8;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+.input-group input:focus {
+  outline: none;
+  border-color: #ff6f3d;
+  background-color: white;
+}
+
+/* 약관 동의 체크박스 영역 */
+.term-options {
+  margin: 10px 0 25px 0;
+}
+.term-label {
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+}
+.term-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #ff6f3d;
+}
+.term-view-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.2s;
+}
+.term-view-link:hover {
+  color: #ff6f3d;
+}
+
+/* 버튼 */
+.main-submit-btn {
+  width: 100%;
+  padding: 16px;
+  background-color: #ff6f3d;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.main-submit-btn:hover {
+  background-color: #e65a2b;
+}
+
+/*약관 팝업*/
+.term-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px); /* 뒷배경 흐리게 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.term-modal-content {
+  background: white;
+  width: 90%;
+  max-width: 440px;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: modalFadeUp 0.3s ease-out;
+}
+
+@keyframes modalFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.term-modal-content h3 {
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.term-text {
+  background: #f9f9f9;
+  padding: 20px;
+  height: 250px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  text-align: left;
+  white-space: pre-wrap;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  margin-bottom: 25px;
+}
+
+.modal-close-btn {
+  width: 100%;
+  padding: 15px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------- */
+
+/* 소셜 로그인 및 하단 링크 */
+.divider {
+  position: relative;
+  margin: 35px 0;
+}
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #eaeaea;
+}
+.divider span {
+  position: relative;
+  background: white;
+  padding: 0 15px;
+  color: #bbb;
+  font-size: 14px;
+}
+
+.social-auth-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.social-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.social-btn.kakao {
+  background-color: #fee500;
+  color: #191919;
+}
+.social-btn.naver {
+  background-color: #03c75a;
+  color: white;
+}
+.social-btn.google {
+  background-color: white;
+  color: #555;
+  border: 1px solid #eaeaea;
+}
+.bottom-link {
+  font-size: 15px;
+  color: #777;
+}
+.bottom-link a {
+  text-decoration: none;
+  color: #ff6f3d;
+  font-weight: 700;
+}
